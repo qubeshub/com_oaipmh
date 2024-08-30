@@ -310,7 +310,7 @@ class DublinCore implements Schema
 		}
 		if (!empty($result->type))
 		{
-			$this->response->element('setSpec', $result->type)->end();
+			$this->response->element('setSpec', $result->spec)->end();
 		}
 
 		$this->response->end(); // End header

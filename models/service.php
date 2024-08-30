@@ -417,7 +417,15 @@ class Service extends Obj
 				continue;
 			}
 
+			/*
+			 * setSpec, given in "plugin:alias" form (e.g. "publications:qbcc")
+			 * 	First element is alias.
+			 * 	Second element is used in setName.
+			 * 	Third element is used set as description of the setSpec.
+			 * 	Fourth element specifies the plugin.
+			*/
 			$spec = '';
+			$name = '';
 			if (!empty($set[0]))
 			{
 				$spec = $set[0];
@@ -430,6 +438,7 @@ class Service extends Obj
 			if (isset($set[3]) && !empty($set[3]))
 			{
 				$spec = $set[3] . ':' . $spec;
+				$name = ucfirst($set[3]) . ': ';
 			}
 
 			$this->response
@@ -438,7 +447,7 @@ class Service extends Obj
 
 			if (!empty($set[1]))
 			{
-				$this->response->element('setName', $set[1])->end();
+				$this->response->element('setName', $name . $set[1])->end();
 			}
 
 			if (!empty($set[2]) && $this->schema)
