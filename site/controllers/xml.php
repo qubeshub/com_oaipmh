@@ -39,8 +39,8 @@ class Xml extends SiteController
 			$until = \Date::of($until)->toSql();
 		}
 		$set        = Request::getString('set');
-		$resumption = urldecode(Request::getString('resumptionToken'));
-		$identifier = urldecode(Request::getString('identifier'));
+		$resumption = urldecode(Request::getString('resumptionToken',''));
+		$identifier = urldecode(Request::getString('identifier',''));
 
 		$igran  = 'YYYY-MM-DD';
 		$igran .= $this->config->get('gran', 'c') == 'c' ? 'Thh:mm:ssZ' : '';
